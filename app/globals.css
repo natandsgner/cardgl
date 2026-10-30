@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+:root { color-scheme: dark; --ink: #061014; --blue: #0c6c91; --cyan: #48b6d8; --muted: #83949c; }
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--ink); color: #f5f8f9; font-family: Arial, Helvetica, sans-serif; }
+a { color: inherit; }
+
+.app-shell { min-height: 100vh; overflow: hidden; background: radial-gradient(circle at 50% 20%, #10252c 0, var(--ink) 34rem); }
+.content-wrap { width: min(100% - 40px, 560px); min-height: 100vh; margin: 0 auto; padding: 32px 0 26px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+.ambient-glow { position: fixed; width: 260px; height: 260px; left: calc(50% - 130px); top: 32%; border-radius: 50%; background: #167895; filter: blur(100px); opacity: .11; pointer-events: none; }
+.page-header { width: 100%; display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 9px; letter-spacing: .22em; }
+.header-line { flex: 1; height: 1px; background: #203238; }
+.badge-stage { perspective: 1500px; width: min(100%, 286px); margin: 28px auto 36px; }
+.badge { width: 100%; aspect-ratio: 0.625; transform-style: preserve-3d; transition: transform 1.25s cubic-bezier(.2,.75,.2,1); }
+.badge.is-flipped { transform: rotateY(180deg); }
+.badge-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; }
+.badge-face { position: absolute; inset: 0; border-radius: 10px; overflow: hidden; backface-visibility: hidden; box-shadow: 0 20px 55px #0008, 0 0 0 1px #ffffff12; }
+.badge-front { background: #050d10; padding: 31px 28px 24px; display: flex; flex-direction: column; align-items: center; }
+.badge-front::after, .badge-back::after { content: ''; position: absolute; inset: 10px; border: 1px solid #6bbbd322; border-radius: 6px; pointer-events: none; }
+.badge-title { margin: 0 0 15px; font-size: 10px; letter-spacing: .3em; color: #dcebf0; animation: shimmer 4s ease-in-out infinite; }
+.portrait { width: 138px; aspect-ratio: 1; border-radius: 50%; border: 1px solid #48b6d8; background: radial-gradient(circle at 50% 30%, #7bc8db 0 9%, #2c738e 10% 27%, #173542 28% 57%, #0c1e26 58%); box-shadow: 0 0 0 5px #061116, 0 0 0 6px #174b60; display: grid; place-items: center; color: #d3f1f7; font-size: 31px; letter-spacing: .1em; font-weight: 300; }
+.front-details { width: 100%; margin-top: 24px; }
+.info-field { border-bottom: 1px solid #6c8d964d; padding: 0 0 8px; margin-bottom: 14px; display: flex; flex-direction: column; gap: 3px; }
+.field-label { color: #92a6ac; text-transform: uppercase; font-size: 8px; letter-spacing: .12em; }
+.info-field strong { color: #f1f6f7; font-size: 11px; font-weight: 500; letter-spacing: .08em; }
+.lovina-mark { margin-top: auto; align-self: flex-start; color: #a9c1c7; font-size: 8px; letter-spacing: .04em; }
+.badge-back { transform: rotateY(180deg); background: linear-gradient(145deg, #0d759a, #07516f); padding: 34px 28px; }
+.back-details { position: relative; z-index: 1; margin-top: 3px; }
+.badge-back .info-field { border-color: #d4f1f433; margin-bottom: 20px; }
+.badge-back .field-label { color: #e3f5f8; }
+.badge-back .info-field strong { color: white; }
+.back-brand { position: absolute; z-index: 1; left: 28px; bottom: 31px; font-size: 8px; letter-spacing: .2em; color: #bde5ee; }
+.quick-info { width: 100%; border-top: 1px solid #23363c; padding-top: 20px; }
+.quick-heading { display: flex; gap: 9px; align-items: center; margin-bottom: 18px; }
+.quick-dot { width: 5px; height: 5px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan); }
+.quick-heading p { margin: 0; color: #b5c4c8; text-transform: uppercase; letter-spacing: .14em; font-size: 9px; }
+.quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.quick-grid .info-field { margin: 0; border: 0; padding: 0; gap: 6px; }
+.quick-grid .field-label { font-size: 8px; color: #71838a; }
+.quick-grid .info-field strong { font-size: 10px; color: #d8e2e5; }
+.group-link { margin-top: 28px; padding: 12px 17px; border: 1px solid #3b555d; border-radius: 999px; text-decoration: none; font-size: 10px; letter-spacing: .08em; color: #d2e2e5; transition: all .2s ease; }
+.group-link:hover { border-color: var(--cyan); color: white; background: #12333d; transform: translateY(-2px); }
+.group-link span { color: var(--cyan); margin-left: 8px; font-size: 14px; }
+.page-footer { margin-top: 22px; padding-top: 0; display: flex; flex-direction: column; align-items: center; gap: 7px; color: #53666c; font-size: 8px; letter-spacing: .18em; }
+.page-footer span { color: #53666c; }
+
+.verification { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at center, #122830, var(--ink) 55%); }
+.verification-card { width: min(100%, 360px); text-align: center; padding: 40px 24px; }
+.verification-icon { width: 44px; height: 44px; margin: 0 auto 24px; border: 1px solid #4eb6d3; border-radius: 50%; color: #8dd9e9; display: grid; place-items: center; font-size: 20px; box-shadow: 0 0 30px #2c9bb433; }
+.verification-kicker { color: #6caec0; font-size: 9px; letter-spacing: .28em; margin: 0 0 14px; }
+.verification h1 { max-width: 280px; margin: 0 auto 28px; font-size: 20px; line-height: 1.35; font-weight: 400; }
+.progress-track { height: 2px; width: 190px; margin: 0 auto 14px; background: #29434c; overflow: hidden; }
+.progress-track span { display: block; height: 100%; width: 0; background: #5dc0da; animation: progress 2.4s ease forwards; }
+.loading-copy { color: #71878f; font-size: 10px; letter-spacing: .08em; }
+@keyframes progress { to { width: 100%; } }
+@keyframes shimmer { 0%, 75%, 100% { opacity: .75; text-shadow: none; } 85% { opacity: 1; text-shadow: 0 0 14px #8be0f2; } }
+@media (max-width: 420px) { .content-wrap { width: min(100% - 32px, 560px); padding-top: 24px; } .badge-stage { width: min(100%, 250px); margin: 22px auto 30px; } .badge-front { padding: 26px 25px 20px; } .portrait { width: 120px; } .quick-grid { gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
