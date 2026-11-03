@@ -11,7 +11,14 @@ function BadgeFront({ leader }: { leader: Leader }) {
   return <section className="badge-face badge-front" aria-label="Frente do crachá">
     <p className="badge-title">{leader.title}</p>
     <div className="portrait" aria-label={`Fotografia de ${leader.name}`}>
-      {leader.photo ? <img src={leader.photo} alt={`Foto de ${leader.name}`} /> : <span>{leader.initials}</span>}
+        {leader.photo ? (
+          <img
+            src={`/cardgl${leader.photo}`}
+            alt={`Foto de ${leader.name}`}
+          />
+        ) : (
+          <span>{leader.initials}</span>
+        )}
     </div>
     <div className="front-details"><InfoField label="Nome" value={leader.name} /><InfoField label="Função" value={leader.role} /></div>
     <span className="lovina-mark">Grupo Lovina</span>
